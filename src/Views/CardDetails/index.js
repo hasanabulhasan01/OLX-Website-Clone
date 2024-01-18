@@ -1,3 +1,5 @@
+import Header from '../../Components/Header'
+import Footer from '../../Components/Footer'
 import "./index.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -22,6 +24,8 @@ function CardDetails() {
   const cardImages = [cardData.images];
 
   return (
+    <>
+    <Header />
     <div className="MainDivv">
       <div className="image-library">
         <FbImageLibrary images={cardImages[0]} />
@@ -36,6 +40,8 @@ function CardDetails() {
         <p>Posted 3 Days Ago</p>
       </div>
     </div>
+    <Footer />
+    </>
   );
 }
 

@@ -1,3 +1,5 @@
+import Header from '../../Components/Header'
+import Footer from '../../Components/Footer'
 import "./index.css";
 import Cards from "../../Components/Cards";
 import { useState, useEffect } from "react";
@@ -20,7 +22,7 @@ function Dashboard() {
   if (!data.length) {
     return (
       <div className="loader">
-        <img src="https://cdn.dribbble.com/users/2973561/screenshots/5757826/loading__.gif" />
+        <img alt='' src="https://cdn.dribbble.com/users/2973561/screenshots/5757826/loading__.gif" />
       </div>
     );
   }
@@ -28,6 +30,7 @@ function Dashboard() {
   console.log(data);
   return (
     <>
+    <Header />
       <div className="MainDiv">
         <div className="adv">
           <img
@@ -214,6 +217,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

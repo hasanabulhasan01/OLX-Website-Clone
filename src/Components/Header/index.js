@@ -1,7 +1,9 @@
 import "./index.css";
-// import sellButtonImg from '../../Assets/images/sellButton.png';
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate()
+
   return (
     <>
       <div className="mainHeader">
@@ -121,7 +123,7 @@ function Header() {
             </div>
           </div>
           <div className="login">
-            <button>
+            <button onClick={()=>navigate('/Login')}>
               <span>Login</span>
             </button>
           </div>
