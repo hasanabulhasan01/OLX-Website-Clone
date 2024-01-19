@@ -1,9 +1,9 @@
-.form-v5-content  {
+.form-v5-contentt  {
 	background: #fff;
 	width: 460px;
     border: 1px solid #cabbbb;
 	box-shadow: 5px 5px 3px #cabbbb ;
-	border-radius: 30px!important;
+	border-radius: 20px;
 	/* -o-border-radius: 8px;
 	-ms-border-radius: 8px;
 	-moz-border-radius: 8px;
@@ -16,7 +16,7 @@
 	position: relative;
 	font-size: 18px;
 }
-.form-v5-content .form-detail {
+.form-v5-contentt .form-detail {
 	padding: 20px 30px 20px 30px;
 	position: relative;
 }
@@ -144,12 +144,12 @@ input:-moz-placeholder { /* Firefox 18- */
     font-size: 17.5px;
     text-decoration: underline;
 }
-.signup-btn{
+.post-btn{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 40px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .reg{
     border: none;

@@ -3,6 +3,7 @@ import Dashboard from "../Views/Dashboard";
 import Login from '../Views/Login';
 import CardDetails from "../Views/CardDetails";
 import Register from '../Views/Register';
+import PostAd from '../Views/PostAd'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/Register",
     element: <Register />,
+  },
+  {
+    path: "/PostAd",
+    element: <PostAd />,
   }
 ]);
 function Router() {

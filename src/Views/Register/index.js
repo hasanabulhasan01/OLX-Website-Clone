@@ -1,9 +1,17 @@
-import './index.css'
+import "./index.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { register } from "../../Config/firebase";
 
-
-function Register () {
-  const navigate = useNavigate()
+function Register() {
+  const navigate = useNavigate();
+  const [fullName, setFullName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const signUp = () => {
+    register({ email, password, fullName });
+    navigate("/Login");
+  };
 
   return (
     <div className="form-v5">
@@ -14,6 +22,7 @@ function Register () {
             <div className="form-row">
               <label for="full-name">User Name:</label>
               <input
+                onChange={(e) => setFullName(e.target.value)}
                 type="text"
                 name="full-name"
                 id="full-name"
@@ -25,6 +34,7 @@ function Register () {
             <div className="form-row">
               <label for="your-email">Email:</label>
               <input
+                onChange={(e) => setEmail(e.target.value)}
                 type="text"
                 name="your-email"
                 id="your-email"
@@ -37,6 +47,7 @@ function Register () {
             <div className="form-row">
               <label for="password">Password:</label>
               <input
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 name="password"
                 id="password"
@@ -46,16 +57,21 @@ function Register () {
               />
             </div>
             <div className="last-line">
-              <p>Already have an account? <span onClick={()=>navigate('/Login')}>Login</span> </p>
+              <p>
+                Already have an account?{" "}
+                <span onClick={() => navigate("/Login")}>Login</span>{" "}
+              </p>
             </div>
             <div className="signup-btn">
-              <button className="reg">Register</button>
+              <button onClick={signUp} className="reg">
+                Register
+              </button>
             </div>
           </form>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Register;

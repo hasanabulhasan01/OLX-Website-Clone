@@ -128,7 +128,7 @@ function Header() {
             </button>
           </div>
           <div className="sell">
-            <button>
+            <button onClick={()=>navigate('/PostAd')}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="104"

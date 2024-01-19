@@ -2,16 +2,24 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { useNavigate } from "react-router-dom";
-
+import { useState } from "react";
+import { login } from "../../Config/firebase";
 
 function Login() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const signIn = async () => {
+    await login({ email, password });
+    navigate("/ ");
+  };
 
   return (
     <div className="form-v5">
       <div className="page-content">
         <div className="form-v5-content">
-          <form className="form-detail" action="#" method="post">
+          <div className="form-detail">
             <h2>Login</h2>
             {/* <div className="form-row">
               <label for="full-name">User Name:</label>
@@ -24,10 +32,11 @@ function Login() {
                 required
               />
             </div> */}
-            
+
             <div className="form-row">
               <label for="your-email">Email:</label>
               <input
+                onChange={(e) => setEmail(e.target.value)}
                 type="text"
                 name="your-email"
                 id="your-email"
@@ -37,10 +46,11 @@ function Login() {
                 pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"
               />
             </div>
-            <br/>
+            <br />
             <div className="form-row">
               <label for="password">Password:</label>
               <input
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 name="password"
                 id="password"
@@ -49,14 +59,19 @@ function Login() {
                 required
               />
             </div>
-            <br/>
+            <br />
             <div className="last-line">
-              <p>Don't have an account? <span onClick={()=>navigate('/Register')}>Register</span> </p>
+              <p>
+                Don't have an account?{" "}
+                <span onClick={() => navigate("/Register")}>Register</span>{" "}
+              </p>
             </div>
             <div className="signup-btn">
-              <button className="reg">Login</button>
+              <button onClick={signIn} className="reg">
+                Login
+              </button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
