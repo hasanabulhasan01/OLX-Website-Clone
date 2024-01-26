@@ -4,7 +4,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,8 +18,9 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 export async function register(userInfo) {
   try {
@@ -45,15 +47,33 @@ export async function login(userInfo) {
 
 export async function postAd(adInfo) {
   try {
-    const {productName, productPrice, description, quantity} = adInfo;
+    const { productName, productPrice, description, quantity, image } = adInfo;
+
+    const storageRef = ref(storage, `adInfo/${image.name}`);
+    await uploadBytes(storageRef, image);
+    const url = await getDownloadURL(storageRef);
+
     await addDoc(collection(db, "adInfo"), {
       productName,
       productPrice,
       description,
       quantity,
+      imageUrl: url,
     });
-    alert('Ad Posted successfully');
+    alert("Ad Posted successfully");
   } catch (e) {
     alert(e.message);
   }
+}
+
+export async function getAds() {
+  const querySnapshot = await getDocs(collection(db, "adInfo"));
+  const ads = []
+  querySnapshot.forEach((doc) => {
+    const ad = doc.data();
+    ad.id = doc.id
+    ads.push(ad)
+    console.log(doc.id, " => ", doc.data());
+  });
+  return ads;
 }

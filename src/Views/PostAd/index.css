@@ -1,6 +1,6 @@
 .form-v5-contentt  {
 	background: #fff;
-	width: 460px;
+	width: 500px;
     border: 1px solid #cabbbb;
 	box-shadow: 5px 5px 3px #cabbbb ;
 	border-radius: 20px;
@@ -9,7 +9,8 @@
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px; */
 	margin: auto;
-    margin-top: 50px;
+    margin-top: 20px;
+	margin-bottom: 20px;
 	font-family: 'Roboto', sans-serif;
 	color: #333;
 	font-weight: 400;
@@ -17,7 +18,7 @@
 	font-size: 18px;
 }
 .form-v5-contentt .form-detail {
-	padding: 20px 30px 20px 30px;
+	padding: 10px 30px 10px 30px;
 	position: relative;
 }
 .form-detail h2 {
@@ -148,7 +149,7 @@ input:-moz-placeholder { /* Firefox 18- */
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 30px;
     margin-bottom: 20px;
 }
 .reg{

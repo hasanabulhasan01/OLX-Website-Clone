@@ -9,10 +9,11 @@ function PostAd() {
   const [productPrice, setProductPrice] = useState();
   const [description, setDescription] = useState();
   const [quantity, setQuantity] = useState();
+  const [image, setImage] = useState();
   
 
   const post = async () => {
-   await postAd({ productName, productPrice, description, quantity });
+   await postAd({ productName, productPrice, description, quantity, image });
     navigate("/ ");
   };
   return(
@@ -61,11 +62,23 @@ function PostAd() {
               <label for="quantity">Quantity:</label>
               <input
                 onChange={(e) => setQuantity(e.target.value)}
-                type="text"
+                type="number"
                 name="quantity"
                 id="quantity"
                 className="input-text"
                 placeholder="Available Quantity"
+                required
+              />
+            </div>
+            <div className="form-row">
+              <label for="image">Upload Image:</label>
+              <input
+                onChange={(e) => setImage(e.target.files[0])}
+                type="file"
+                name="image"
+                id="image"
+                className="input-text"
+                placeholder=""
                 required
               />
             </div>

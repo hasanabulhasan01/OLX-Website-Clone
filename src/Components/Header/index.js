@@ -1,8 +1,34 @@
 import "./index.css";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { auth } from "../../Config/firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 function Header() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log(user);
+        setUser(user);
+        // const uid = user.uid;
+        // ...
+      } else {
+        setUser(null);
+      }
+    });
+  }, []);
+
+  const logout = async ()=>{
+    await signOut(auth).then(() => {
+      alert(' User logged out Successfully');
+    }).catch((error) => {
+      alert(error.message)
+    });
+    navigate ("/login")
+  }
 
   return (
     <>
@@ -123,12 +149,18 @@ function Header() {
             </div>
           </div>
           <div className="login">
-            <button onClick={()=>navigate('/Login')}>
-              <span>Login</span>
-            </button>
+            {user ? (
+              <button onClick={logout}>
+                <span>Logout</span>
+              </button>
+            ) : (
+              <button onClick={() => navigate("/Login")}>
+                <span>Login</span>
+              </button>
+            )}
           </div>
           <div className="sell">
-            <button onClick={()=>navigate('/PostAd')}>
+            <button onClick={() => navigate("/PostAd")}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="104"
@@ -179,26 +211,26 @@ function Header() {
             />
           </svg>
         </div>
-        <div className='categories-2'>
-          <a href='' >Mobile Phones</a>
+        <div className="categories-2">
+          <a href="">Mobile Phones</a>
         </div>
-        <div className='categories-2'>
-          <a href='' >Cars</a>
+        <div className="categories-2">
+          <a href="">Cars</a>
         </div>
-        <div className='categories-2'>
-          <a href='' >Motorcycles</a>
+        <div className="categories-2">
+          <a href="">Motorcycles</a>
         </div>
-        <div className='categories-2'>
-          <a href='' >Houses</a>
+        <div className="categories-2">
+          <a href="">Houses</a>
         </div>
-        <div className='categories-2'>
-          <a href='' >Video/Audios</a>
+        <div className="categories-2">
+          <a href="">Video/Audios</a>
         </div>
-        <div className='categories-2'>
-          <a href='' >Tablets</a>
+        <div className="categories-2">
+          <a href="">Tablets</a>
         </div>
-        <div className='categories-2'>
-          <a href='' >Land & Plots</a>
+        <div className="categories-2">
+          <a href="">Land & Plots</a>
         </div>
       </div>
     </>

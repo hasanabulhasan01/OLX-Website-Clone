@@ -5,18 +5,19 @@ import Cards from "../../Components/Cards";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import { getAds } from '../../Config/firebase';
 
 function Dashboard() {
   const [data, setData] = useState([]);
 
   useEffect(function () {
-    getDataFromAPI();
+    getAdsFromDb();
   }, []);
 
-  function getDataFromAPI() {
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then((res) => setData(res.products));
+  async function getAdsFromDb() {
+    const ads  = await getAds();
+    console.log('Ads', ads)
+    setData(ads);
   }
 
   if (!data.length) {
@@ -202,12 +203,12 @@ function Dashboard() {
                   return (
                     <div class="col-3">
                       <Cards
-                        thumbnail={item.thumbnail}
-                        title={item.title}
-                        brand={item.brand}
+                        thumbnail={item.imageUrl}
+                        title={item.productName}
+                        // quantity={item.quantity}
                         description={item.description}
                         id={item.id}
-                        price={item.price}
+                        price={item.productPrice}
                       />
                     </div>
                   );
