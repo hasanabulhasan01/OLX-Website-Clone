@@ -4,7 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 // Your web app's Firebase configuration
@@ -24,11 +24,12 @@ const storage = getStorage(app);
 
 export async function register(userInfo) {
   try {
-    const { email, password, fullName } = userInfo;
+    const { email, password, fullName, dob } = userInfo;
     await createUserWithEmailAndPassword(auth, email, password);
     await addDoc(collection(db, "users"), {
       fullName,
       email,
+      dob,
     });
   } catch (e) {
     alert(e.message);
@@ -76,4 +77,43 @@ export async function getAds() {
     console.log(doc.id, " => ", doc.data());
   });
   return ads;
+}
+
+export async function getUsers(id) {
+  try {
+    let res = [];
+    const querySnapshot = await getDocs(collection(db, "users"));
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+      const ad = doc.data();
+      ad.id = doc.id;
+      res.push(ad);
+    });
+
+    console.log(res, "data");
+
+    return res;
+  } catch (error) {
+    alert(error.message);
+  }
+}
+
+export async function updateUserData(data) {
+  try {
+    const { fullName, email, dob, phoneNo, address, userId } = data;
+    const dataRef = doc(db, "users", userId);
+    console.log(dataRef, "data-----");
+    await updateDoc(dataRef, {
+      fullName,
+      email,
+      dob,
+      phoneNo,
+      address,
+    });
+    alert("Updated successfully");
+    // console.log(res, "update response");
+  } catch (error) {
+    alert(error.message);
+  }
 }

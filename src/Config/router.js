@@ -4,6 +4,7 @@ import Login from '../Views/Login';
 import CardDetails from "../Views/CardDetails";
 import Register from '../Views/Register';
 import PostAd from '../Views/PostAd'
+import UpdateProfile from "../Views/UpdateUserProfile";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/PostAd",
     element: <PostAd />,
+  },
+  {
+    path: "/UpdateProfile/:id",
+    element: <UpdateProfile />,
   }
 ]);
 function Router() {

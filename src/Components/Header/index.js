@@ -7,6 +7,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 function Header() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [image, setImage] = useState("");
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -21,14 +22,16 @@ function Header() {
     });
   }, []);
 
-  const logout = async ()=>{
-    await signOut(auth).then(() => {
-      alert(' User logged out Successfully');
-    }).catch((error) => {
-      alert(error.message)
-    });
-    navigate ("/login")
-  }
+  const logout = async () => {
+    await signOut(auth)
+      .then(() => {
+        alert(" User logged out Successfully");
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+    navigate("/login");
+  };
 
   return (
     <>
@@ -150,9 +153,29 @@ function Header() {
           </div>
           <div className="login">
             {user ? (
-              <button onClick={logout}>
-                <span>Logout</span>
-              </button>
+              <div className="user-login">
+                <div className="user">
+                  <img
+                    alt=""
+                    width={50}
+                    src="https://static.thenounproject.com/png/363640-200.png"
+                  />
+                </div>
+                <div className="drop-list">
+                  <div>
+                    <img
+                      alt=""
+                      width={40}
+                      src="https://static.thenounproject.com/png/363640-200.png"
+                    />
+                  </div>
+
+                  <h3 onClick={() => navigate(`/UpdateProfile/${user.email}`)}>Update Profile</h3>
+
+                  <hr />
+                  <h3 onClick={logout}>Logout</h3>
+                </div>
+              </div>
             ) : (
               <button onClick={() => navigate("/Login")}>
                 <span>Login</span>

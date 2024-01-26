@@ -74,6 +74,32 @@ input {
 .login{
     margin-left: 1.4%;
 }
+.drop-list{
+  padding: 8px;
+  border-radius: 15px;
+  background-color: white;
+  border: 1px solid rgb(241, 236, 236);
+  box-shadow: 1px 1px 1px rgb(243, 239, 239);
+  display: none;
+  /* height: 50px; */
+  width: 140px;
+  position: absolute;
+  top: 115px;
+  cursor: pointer;
+}
+.drop-list>h3{
+  margin-top: 8px;
+  font-size: 16px!important;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.user-login{
+&:hover{
+  .drop-list{
+    display: block;
+  }
+}
+}
 .login>button{
     border: none;
     background-color: transparent;

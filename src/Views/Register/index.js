@@ -6,10 +6,11 @@ import { register } from "../../Config/firebase";
 function Register() {
   const navigate = useNavigate();
   const [fullName, setFullName] = useState();
+  const [dob, setDob] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const signUp = () => {
-    register({ email, password, fullName });
+    register({ email, password, fullName, dob });
     navigate("/Login");
   };
 
@@ -28,6 +29,18 @@ function Register() {
                 id="full-name"
                 className="input-text"
                 placeholder="Full Name"
+                required
+              />
+            </div>
+            <div className="form-row">
+              <label for="dob">Date of Birth:</label>
+              <input
+                onChange={(e) => setDob(e.target.value)}
+                type="date"
+                name="dob"
+                id="dob"
+                className="input-text"
+                placeholder=""
                 required
               />
             </div>
