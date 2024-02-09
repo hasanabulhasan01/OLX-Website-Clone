@@ -1,7 +1,7 @@
 .Main{
     border: 2px solid rgb(231, 215, 215);
     box-shadow: 3px 3px 2px rgb(245, 242, 242) ;
-    height: 380px;
+    height: 430px;
     width: 310px;
     margin-bottom: 80px!important;
     border-radius: 5px;
@@ -38,4 +38,21 @@
     margin-top: 15px;
     /* color: rgb(113, 109, 109); */
     font-size: 15px;
+}
+.CardBody>.cart-btn{
+    /* margin-bottom: 40px!important; */
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 30px;
+    width: 130px;
+    background-color: rgb(238, 232, 232);
+    border: 2px solid rgb(172, 163, 163);
+    border-radius: 5px;
+    /* color: white; */
+}
+.CardBody>.cart-btn:hover{
+    background-color: transparent;
+}
+.CardBody>.cart-btn:active{
+    transform: scale(0.97);
 }

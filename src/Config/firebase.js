@@ -101,7 +101,12 @@ export async function getUsers(id) {
 
 export async function updateUserData(data) {
   try {
-    const { fullName, email, dob, phoneNo, address, userId } = data;
+    const { fullName, email, dob, phoneNo, address, userId, userImage } = data;
+
+    const storageRef = ref(storage, `users/${userImage.name}`);
+    await uploadBytes(storageRef, userImage);
+    const url = await getDownloadURL(storageRef);
+
     const dataRef = doc(db, "users", userId);
     console.log(dataRef, "data-----");
     await updateDoc(dataRef, {
@@ -110,6 +115,7 @@ export async function updateUserData(data) {
       dob,
       phoneNo,
       address,
+      userImageUrl: url,
     });
     alert("Updated successfully");
     // console.log(res, "update response");

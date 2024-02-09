@@ -5,6 +5,8 @@ import CardDetails from "../Views/CardDetails";
 import Register from '../Views/Register';
 import PostAd from '../Views/PostAd'
 import UpdateProfile from "../Views/UpdateUserProfile";
+import Cart from "../Views/Cart";
+
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/PostAd",
     element: <PostAd />,
+  },
+  {
+    path: "/Cart",
+    element: <Cart />,
   },
   {
     path: "/UpdateProfile/:id",

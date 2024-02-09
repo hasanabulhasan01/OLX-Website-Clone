@@ -1,0 +1,37 @@
+.cart-main {
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+.cart-heading {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.cart-item {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+.cart-item tr {
+  border-bottom: 1px solid #ddd;
+}
+th{
+    padding: 20px;
+}
+
+.cart-item td {
+  padding: 20px;
+  font-size: 17px;
+  font-weight: 600;
+}
+.img-cell{
+    width: 150px;
+    height: auto;
+}
+
+.desc-cell{
+    max-width: 700px;
+}

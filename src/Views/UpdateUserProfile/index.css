@@ -21,15 +21,15 @@
     width: 80%;
     margin: auto;
     box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-    border-radius: 20px;
-    padding: 10px 20px;
+    border-radius: 30px!important;
+    padding: 20px 30px;
     border: 1px solid rgba(0, 47, 52, 0.36);
     border-radius: 5px;
     margin-bottom: 150px;
   }
   
   .post-btnn {
-    background-color: #002f34;
+    background-color: #4335c9;
     /* width: max-content; */
     border: none;
   }
@@ -37,5 +37,5 @@
   .post-btnn-text {
     font-size: 20px;
     font-family: system-ui;
-    font-weight: 100;
+    font-weight: 500!important;
   }

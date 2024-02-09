@@ -76,28 +76,77 @@ input {
 }
 .drop-list{
   padding: 8px;
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: white;
   border: 1px solid rgb(241, 236, 236);
   box-shadow: 1px 1px 1px rgb(243, 239, 239);
   display: none;
   /* height: 50px; */
-  width: 140px;
+  width: 250px;
   position: absolute;
   top: 115px;
   cursor: pointer;
 }
+.user-img{
+  border-radius: 100%;
+}
+.usr-email{
+  font-size: 14px!important;
+  margin-bottom: 10px!important;
+  text-decoration: underline;
+}
+.usr-name{
+  font-size: 17px!important;
+  font-weight: 700;
+  margin-left: 5px;
+}
+.profile-update-btnn{
+  background-color: transparent;
+  border-radius: 5px;
+  height: 38  px;
+  width: 230px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.profile-update-btnn:active{
+  transform: scale(0.99);
+}
 .drop-list>h3{
-  margin-top: 8px;
-  font-size: 16px!important;
+  margin-top: 15px;
+  margin-left: 3px!important;
+  /* color: rgb(30, 27, 27); */
+  font-size: 17px!important;
   font-weight: 600;
   letter-spacing: 1px;
+}
+.drop-list>h3:hover{
+  transform: scale(1.01);
+  /* text-decoration: underline; */
+}
+.drop-list>h4{
+  margin-top: 2px;
+  margin-left: 3px!important;
+  font-size: 17px!important;
+  /* color: rgb(103, 94, 94); */
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.drop-list>h4:hover{
+  transform: scale(1.01);
+  /* text-decoration: underline; */
+}
+.iconn{
+  margin-right: 12px!important;
+  width: 25px!important;
 }
 .user-login{
 &:hover{
   .drop-list{
     display: block;
   }
+  cursor: pointer;
 }
 }
 .login>button{
@@ -109,17 +158,20 @@ input {
     text-decoration: underline;
 }
 .sell{
-    margin-left: 0.7%;
+    margin-left: 1.5%;
 }
 .sell>button{
-    border: none;
+    border: 6px solid rgb(55, 52, 52);
+    border-radius: 50px;
+    width: 100px;
+    height: 50px;
     background-color: transparent;
 }
+.sell>button:active{
+  transform: scale(0.96);
+}
 .sell>button>span{
-    position: relative;
-    top: 0px;
-    left: -80px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
 }
 .y{
@@ -140,7 +192,7 @@ input {
 }
 .categories>span{
     font-weight: 650;
-    font-size: ;
+    /* font-size: ; */
 }
 .categories>svg{
     margin-left: 5px;

@@ -13,6 +13,9 @@ const UpdateProfile = () => {
   const [email, setEmail] = useState();
   const [phoneNo, setPhoneNo] = useState("");
   const [address, setAddress] = useState("");
+  const [userImage, setUserImage] = useState("");
+
+  // const dbImage = userImage
 
   let { id } = useParams();
   console.log("Userid-------------", id);
@@ -27,7 +30,7 @@ const UpdateProfile = () => {
     const userData = await getUsers();
     const user = userData.find((user) => user.email === id);
 
-    console.log(user, "found uers-------");
+    console.log(user, "found users-------");
     setUserId(user?.id);
     setCurrentUser(user);
     setFullName(user?.fullName);
@@ -35,6 +38,7 @@ const UpdateProfile = () => {
     setDob(user?.dob);
     setPhoneNo(user?.phoneNo ? user?.phoneNo : "");
     setAddress(user?.address ? user?.address : "");
+    setUserImage(user?.userImageUrl ? user?.userImageUrl : "");
     return user || null; // Return null if no user is found
   };
 
@@ -49,6 +53,7 @@ const UpdateProfile = () => {
       phoneNo,
       address,
       userId,
+      userImage,
     });
     console.log(res, "updated user");
     navigate("/");
@@ -127,9 +132,6 @@ const UpdateProfile = () => {
                     setDob(e.target.value);
                   }}
                 />
-                {/* <div id="passwordHelpBlock" class="form-text">
-                    Please enter the price of the product you wish to sell
-                  </div> */}
               </div>
             </div>
 
@@ -147,10 +149,6 @@ const UpdateProfile = () => {
                   value={phoneNo}
                   onChange={(e) => setPhoneNo(e.target.value)}
                 />
-                {/* <div id="passwordHelpBlock" class="form-text">
-                    Mention the key features of your item (e.g. brand, model, age,
-                    type)
-                  </div> */}
               </div>
             </div>
           </div>
@@ -171,16 +169,33 @@ const UpdateProfile = () => {
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
               />
-              {/* <div id="passwordHelpBlock" class="form-text">
-                  Include condition, features and reason for selling
-                </div> */}
             </div>
           </div>
+          <div class="col-md-6">
+              <div class="mb-4">
+                {/* <label for="exampleFormControlInput1" class="form-label">
+                  Title
+                </label> */}
+                <h5 className="input-field-labels">Upload Profile Pic:</h5>
+                <input
+                  type="file"
+                  class="form-control input-field"
+                  id="exampleFormControlInput1"
+                  placeholder="Please Enter Username"
+                  // value={image}
+                  onChange={(e) => setUserImage(e.target.files[0])}
+                />
+                {/* <div id="passwordHelpBlock" class="form-text">
+                    Mention the key features of your item (e.g. brand, model, age,
+                    type)
+                  </div> */}
+              </div>
+            </div>
 
           <div class="row">
             <button
               type="button"
-              class="btn btn-primary btn-lg post-btnn"
+              class="btn btn-primary btn-lg post-btnn mb-3"
               //   onClick={handlePostAdd}
               onClick={updateUser}
             >
