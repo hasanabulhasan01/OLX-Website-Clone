@@ -1,6 +1,6 @@
 import "./index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 
 function Cart() {
@@ -22,13 +22,14 @@ function Cart() {
           </tr>
           {cartData.map(function (item, index) {
             return (
-              <tr>
+              <tr className="itemss">
                 <td className="img-cell">
                   <img width={150} src={item.thumbnail} alt="" />
                 </td>
                 <td className="title-cell">{item.title}</td>
                 <td className="desc-cell">{item.description}</td>
-                <td className="price-cell">{item.price}</td>
+                <td className="price-cell">{item.price}/-</td>
+                <td className="del-cell delete"><FontAwesomeIcon icon={faTrash} /></td>
               </tr>
             );
           })}

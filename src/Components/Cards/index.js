@@ -12,7 +12,7 @@ function Cards(props) {
 
   return (
     <>
-      <div className="Main">
+            <div className="Main">
         <div className="image">
           <img alt="" src={thumbnail} />
         </div>
@@ -29,7 +29,7 @@ function Cards(props) {
           </button>
           <button onClick={() => dispatch(updateCartItem(props))} className="cart-btn">
             {" "}
-            <FontAwesomeIcon icon={faCartPlus} /> Add to cart
+            <FontAwesomeIcon icon={faCartPlus} /> Cart
           </button>
         </div>
       </div>

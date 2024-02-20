@@ -35,3 +35,74 @@ th{
 .desc-cell{
     max-width: 700px;
 }
+.del-cell{
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+}
+.del-cell:active{
+  transform: scale(0.95);
+}
+
+/* Media queries for responsiveness */
+@media only screen and (max-width: 768px) {
+  .cart-main {
+    width: 90%;
+  }
+
+  .cart-item td {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .cart-heading {
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .itemss{
+    border: 1px solid rgb(212, 198, 198)!important;
+    margin-bottom: 5px;
+  }
+  .img-cell {
+    width: 100%;
+  }
+
+  .title-cell,
+  .desc-cell,
+  .img-cell,
+  .price-cell,
+  .del-cell {
+    display: none;
+  }
+
+  .cart-item tr {
+    display: block;
+    margin-bottom: 20px;
+    border: none;
+  }
+
+  .cart-item td {
+    display: block;
+    text-align: center;
+  }
+
+  .delete{
+    width: 98%;
+    text-align: right!important;
+    margin-top: -40px;
+    /* transform: scale(1.3); */
+  }
+  .delete:active{
+    transform: scale(1);
+  }
+
+  .cart-item td:first-child {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .cart-item td:last-child {
+    border-bottom: none;
+  }
+}

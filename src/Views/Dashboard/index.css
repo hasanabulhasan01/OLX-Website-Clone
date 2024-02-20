@@ -1,16 +1,19 @@
-.MainDiv{
-
-}
 .loader{
     width: 60%;
     margin: auto;
-    margin-top: 60px;
+    margin-top: 100px;
 }
 .adv{
-    width: 86%;
+    width: 95%;
     margin: auto;
+    display: flex;
+    align-items: center;
     margin-top: 20px;
     margin-bottom: 10px;
+}
+.adv>img{
+    width: 95%;
+    margin: auto;
 }
 .AllCategories{
     margin-top: 30px;
@@ -21,8 +24,12 @@ h4{
     margin-top: 10px!important;
 }
 .heading{
-   padding-left: 7.5%!important; 
+   padding-left: 4%!important; 
    margin-bottom: 20px!important;
+}
+.cat-iconMain{
+    width: 85%;
+    margin: auto;
 }
 h3{
     font-size: 25px!important;
@@ -30,4 +37,18 @@ h3{
 .cat{
     margin-right: 36px!important;
     margin-bottom: 15px!important;
+}
+
+.cards-mainn{
+    width: 90%;
+    margin: auto;
+}
+@media (max-width: 768px) {
+    .cards-mainn{
+        width: 80%;
+    }
+    .cat-iconMain{
+        width: 75%;
+        margin: auto;
+    }
 }
