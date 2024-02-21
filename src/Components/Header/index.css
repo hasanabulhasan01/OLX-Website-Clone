@@ -220,6 +220,7 @@ input {
   .input-1 {
     width: 48%;
     height: 30px;
+    transform: scale(0.95);
   }
   .inputt {
     height: 25px;
@@ -241,6 +242,7 @@ input {
   }
   .logo-2 {
     padding-left: 2%;
+    transform: scale(0.95);
   }
   .b28a1eb6{
     height:32px;

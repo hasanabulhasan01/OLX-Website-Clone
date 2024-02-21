@@ -22,13 +22,13 @@ function Dashboard() {
 
   if (!data.length) {
     return (
-      <div className="loader">
+      <div className="loader ">
         <img alt='' src="https://cdn.dribbble.com/users/2973561/screenshots/5757826/loading__.gif" />
       </div>
     );
   }
 
-  console.log(data);
+  console.log(data, "ads......");
   return (
     <>
     <Header />
@@ -199,7 +199,7 @@ function Dashboard() {
                   return (
                     <div class="col-md-4 col-lg-3 col-sm-6 col-12">
                       <Cards
-                        thumbnail={item.imageUrl}
+                        thumbnail={item.imageUrls[1]}
                         title={item.productName}
                         // quantity={item.quantity}
                         description={item.description}

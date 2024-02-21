@@ -51,4 +51,8 @@ h3{
         width: 75%;
         margin: auto;
     }
+    .loader{
+        display: none;
+
+    }
 }

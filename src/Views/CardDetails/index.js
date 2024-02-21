@@ -4,10 +4,12 @@ import "./index.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
-// import FbImageLibrary from "react-fb-image-grid";
+import ImageSlider from '../../Components/ImageSlider';
+
 
 function CardDetails() {
   const [cardData, setCardData] = useState([]);
+  console.log(cardData, "Card data.....");
   let { id } = useParams();
   console.log(id);
   const db = getFirestore();
@@ -38,7 +40,7 @@ function CardDetails() {
       <div className="MainDivv">
         <div className="details">
           <div className="imagee">
-            <img  alt="" src={cardData.imageUrl} />
+          <ImageSlider images={cardData?.imageUrls} />
           </div>
           <h3>{cardData.productName}</h3>
           <h4>

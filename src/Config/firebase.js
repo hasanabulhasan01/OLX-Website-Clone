@@ -48,18 +48,24 @@ export async function login(userInfo) {
 
 export async function postAd(adInfo) {
   try {
-    const { productName, productPrice, description, quantity, image } = adInfo;
-
+    const { productName, productPrice, description, quantity, category, images, currentUser, } = adInfo;
+    const imageUrls = [];
+    
+    for (const image of images) {
     const storageRef = ref(storage, `adInfo/${image.name}`);
     await uploadBytes(storageRef, image);
     const url = await getDownloadURL(storageRef);
+    imageUrls.push(url);
+    }
 
     await addDoc(collection(db, "adInfo"), {
       productName,
       productPrice,
       description,
       quantity,
-      imageUrl: url,
+      imageUrls,
+      category,
+      currentUser
     });
     alert("Ad Posted successfully");
   } catch (e) {

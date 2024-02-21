@@ -30,7 +30,8 @@
   
   .post-btnn {
     background-color: #4335c9;
-    /* width: max-content; */
+    width: 98%;
+    margin: auto;
     border: none;
   }
   

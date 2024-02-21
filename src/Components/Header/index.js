@@ -10,6 +10,7 @@ import { getUsers } from "../../Config/firebase";
 function Header() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
+  console.log(currentUser, "currentUser..................");
   const defaultImage =  "https://static.thenounproject.com/png/363640-200.png";
   const [currentUserImage, setCurrentUserImage] = useState(null);
   const [currentUserName, setCurrentUserName] = useState(null);
@@ -26,8 +27,6 @@ function Header() {
         setCurrentUser(null);
       }
     });
-
-    // getCurrentUser();
 
   }, []);
 
