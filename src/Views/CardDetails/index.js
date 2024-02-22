@@ -1,22 +1,34 @@
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faComments, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
-import ImageSlider from '../../Components/ImageSlider';
-
+import { getUsers } from "../../Config/firebase";
+import ImageSlider from "../../Components/ImageSlider";
 
 function CardDetails() {
   const [cardData, setCardData] = useState([]);
+  const [sellerDetails, setSellerDetails] = useState(null);
   console.log(cardData, "Card data.....");
   let { id } = useParams();
   console.log(id);
   const db = getFirestore();
 
+  // const [sellerData, setSellerData] = useState(null);
+
+
   useEffect(function () {
     getSingleProduct();
   }, []);
+
+  useEffect(function () {
+    getSeller();
+  }, [cardData]);
 
   async function getSingleProduct() {
     try {
@@ -31,39 +43,65 @@ function CardDetails() {
     } catch (error) {
       alert("No such details for the Ad found");
     }
+
   }
   console.log("adDetails....", cardData);
+
+  const getSeller = async () => {
+    const sellerData = await getUsers();
+    const seller = sellerData.find((user) => user?.email === cardData?.currentUser);
+    setSellerDetails(seller);
+    console.log(seller, "seller Data........")
+  };
 
   return (
     <>
       <Header />
-      <div className="MainDivv">
-        <div className="details">
-          <div className="imagee">
-          <ImageSlider images={cardData?.imageUrls} />
+      <div>
+        <div className="mainn">
+          <div className="ad-container ">
+            <div className="image-slider">
+              <ImageSlider images={cardData?.imageUrls} />
+            </div>
+            <div className="price-sec">
+              <h2>Rs {cardData.productPrice}</h2>
+              <p className="intro">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                fermentum leo eget est consequat, nec laoreet mauris fermentum.
+              </p>
+              <p className="locat"><FontAwesomeIcon icon={faLocationDot} /> Katchery Bazar, Faisalabad</p>
+            </div>
+            <div className="details">
+              <h3>Details</h3>
+              <p className="itemss"><span className="keys">Product Name:</span> {cardData.productName}</p>
+              <p className="itemss"><span className="keys">Category:</span> {cardData.category}</p>
+              <p className="itemss"><span className="keys">Quantity:</span> {cardData.quantity}</p>
+              <p className="itemss"><span className="keys">Condition:</span>Used</p>
+            </div>
+            <div className="desc-sec">
+            <h3>Description</h3>
+            <p>{cardData.description}</p>
+            </div>
           </div>
-          <h3>{cardData.productName}</h3>
-          <h4>
-            <span>Price: Rs </span>
-            {cardData.productPrice}{" "}
-          </h4>
-          <h4>
-            <span>Quantity: </span>
-            {cardData.quantity} pc
-          </h4>
-          <h4>
-            <span>Category: Electronic Item </span>
-          </h4>
-          <h4>
-            <span>Rating: 4.5 </span>
-          </h4>
-          <h4>
-            <span>Description: </span>
-            {cardData.description}
-          </h4>
-          <p>Posted 3 Days Ago</p>
+          <div className="user-container ">
+            <div className="seller-details">
+              <img className="sellerImg" width={60} src={sellerDetails?.userImageUrl} alt=""/>
+              <span className="sellerName"> {sellerDetails?.fullName}</span>
+              <p className="member">Member since August 2019.</p>
+              <div className="contact"><span><FontAwesomeIcon icon={faPhone} /> {sellerDetails?.phoneNo}</span></div>
+              <div className="chat"><span><FontAwesomeIcon icon={faComments} /> Chat</span></div>
+            </div>
+            <div className="location">
+              <h3>Location</h3>
+              <p ><FontAwesomeIcon icon={faLocationDot} /> Katchery Bazar, Faisalabad</p>
+            </div>
+            <div className="adId">
+            <h4>AD ID: {id}</h4>
+            </div>
+          </div>
         </div>
       </div>
+
       <Footer />
     </>
   );
