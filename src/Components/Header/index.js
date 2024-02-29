@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { auth } from "../../Config/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faCartShopping, faCircleQuestion, faHeart, faPlus, faRectangleAd, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown, faBars, faCartShopping, faCircleQuestion, faHeart, faPlus, faRectangleAd, faRightFromBracket, faV } from '@fortawesome/free-solid-svg-icons'
 import { getUsers } from "../../Config/firebase";
 
 function Header() {
@@ -181,7 +181,7 @@ function Header() {
                     alt=""
                     // width={50}
                     src={currentUserImage || defaultImage}
-                  />
+                  /><span className="user-v"><FontAwesomeIcon icon={faAngleDown} /></span>
                 </div>
                 <div className="drop-list">
                   <div>

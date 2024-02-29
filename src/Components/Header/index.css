@@ -64,6 +64,12 @@ input {
   border-radius: 5px;
   background-color: white;
 }
+.user-v{
+  margin-left: 3px;
+  font-size: 20px;
+  align-self: baseline;
+  
+}
 .search-icon-2 {
   padding: 7.8px;
   background-color: black;
@@ -226,23 +232,27 @@ input {
     height: 25px;
   }
   .user-img {
-    width: 40px;
+    width: 36px;
+  }
+  .user-v{
+    font-size: 14px;
   }
   .sell > button {
-    width: 65px;
-    height: 36px;
+    width: 62px;
+    height: 34px;
     border-width: 4px;
     border-radius: 20px!important;
+    transform: scale(0.95);
   }
   .sell > button > span {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     margin-bottom: 30px!important;
     /* display: none; */
   }
   .logo-2 {
     padding-left: 2%;
-    transform: scale(0.95);
+    transform: scale(0.93);
   }
   .b28a1eb6{
     height:32px;

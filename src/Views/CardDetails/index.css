@@ -19,7 +19,7 @@
     border: 1px solid rgb(203, 192, 192);
     border-radius: 5px;
     width: 100%;
-    height: auto;
+    /* min-height:300px ; */
   }
   .price-sec{
     border: 1px solid rgb(203, 192, 192);
